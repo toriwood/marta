@@ -19,7 +19,15 @@
 		<%= bus["VEHICLE"] %> <br>
 		<strong>Next Stop:</strong>
 		<%= bus["TIMEPOINT"] %> <br>
-	</p>
+
+		<strong>Time:</strong>
+		<% if bus["ADHERENCE"].to_i == 0 %>
+		This bus is on time
+		<% elsif bus["ADHERENCE"].to_i < 0 %>
+		This bus is <%= bus["ADHERENCE"].to_i.abs %> minutes late.
+		<% else %>
+		This bus is <%= bus["ADHERENCE"].to_i.abs %> minutes early.
+		<% end %>
 	<% end %>
 	
 
